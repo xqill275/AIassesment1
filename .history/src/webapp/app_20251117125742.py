@@ -12,7 +12,7 @@ app = Flask(__name__)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 MODEL_DIR = os.path.join(BASE_DIR, "model")
 
-model = joblib.load(os.path.join(MODEL_DIR, "bestModel.pkl"))
+model = joblib.load(os.path.join(MODEL_DIR, "random_forest.pkl"))
 scaler = joblib.load(os.path.join(MODEL_DIR, "scaler.pkl"))
 
 # Load a sample row to get correct column order after encoding
@@ -69,9 +69,9 @@ def predict():
         prediction = model.predict(df_scaled)[0]
 
         if prediction == 1:
-            result = "You may be at HIGH risk of Heart Disease."
+            result = "⚠️ You may be at HIGH risk of Heart Disease."
         else:
-            result = "You appear to be at LOW risk of Heart Disease."
+            result = "✅ You appear to be at LOW risk of Heart Disease."
 
         return render_template("index.html", result=result)
 

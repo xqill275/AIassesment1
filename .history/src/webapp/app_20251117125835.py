@@ -69,9 +69,9 @@ def predict():
         prediction = model.predict(df_scaled)[0]
 
         if prediction == 1:
-            result = "You may be at HIGH risk of Heart Disease."
+            result = "⚠️ You may be at HIGH risk of Heart Disease."
         else:
-            result = "You appear to be at LOW risk of Heart Disease."
+            result = "✅ You appear to be at LOW risk of Heart Disease."
 
         return render_template("index.html", result=result)
 
